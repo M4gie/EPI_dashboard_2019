@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  front_dashboard:
+    container_name: front_dashboard
+    build:
+      context: front
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - 8080:80
+    depends_on:
+      - api_dashboard
+
+
+  api_dashboard:
+    container_name: api_dashboard
+    build:
+      context: API
+      dockerfile: Dockerfile
+    env_file: api-docker-compose.env
+    restart: on-failure
+    ports:
+      - 8081:3333
+    depends_on:
+      - db
+    networks:
+      - database
+
+  db:
+    image: postgres:11.2-alpine
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: dashboard
+    restart: on-failure
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks:
+      - database
+
+volumes:
+  database:
+
+networks:
+  database:
+    external: false
+
