@@ -10,7 +10,7 @@ This  project  was  realized  during our third year of  study  at  Epitech. This
     
  - Move `api-docker-compose.env.exemple` to `api-docker-compose.env` and fill it
  
- - Fill `react/.env.production`
+ - Fill `front/.env.production`
 
  - Run `docker-compose build`
  
