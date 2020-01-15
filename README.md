@@ -14,7 +14,7 @@ This  project  was  realized  during our third year of  study  at  Epitech. This
 
  - Run `docker-compose build`
  
- - Run `docker-compose run -d`
+ - Run `docker-compose up -d`
  
  - Run `make && make seed`
  
